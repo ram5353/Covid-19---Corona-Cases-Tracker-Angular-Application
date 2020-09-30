@@ -12,23 +12,24 @@ import { map } from 'rxjs/operators';
 })
 export class CountriesComponent implements OnInit {
 
+  countryName = '';
   data : GlobalDataSummary[];
   countries : string[] = [];
   totalConfirmed = 0;
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
-  selectedCountryData : DateWiseData[]; 
+  selectedCountryData : DateWiseData[];
   dateWiseData ;
   loading = true;
   options: {
-    height : 500, 
+    height : 500,
     animation:{
       duration: 1000,
       easing: 'out',
     },
   }
- 
+
   constructor(private service : DataServiceService) { }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class CountriesComponent implements OnInit {
         map(result=>{
           this.dateWiseData = result;
         })
-      ), 
+      ),
       this.service.getGlobalData().pipe(map(result=>{
         this.data = result;
         this.data.forEach(cs=>{
@@ -53,8 +54,8 @@ export class CountriesComponent implements OnInit {
         }
       }
     )
-    
-    
+
+
 
   }
 
@@ -65,7 +66,7 @@ export class CountriesComponent implements OnInit {
       dataTable.push([cs.date , cs.cases])
     })
 
-   
+
   }
 
   updateValues(country : string){
@@ -79,10 +80,10 @@ export class CountriesComponent implements OnInit {
       }
     })
 
+    this.countryName = country;
     this.selectedCountryData  = this.dateWiseData[country]
-    // console.log(this.selectedCountryData);
     this.updateChart();
-    
+
   }
 
 }

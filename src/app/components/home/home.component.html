@@ -13,7 +13,7 @@
 <hr>
 <div class="ui form">
     <div class="inline fields">
-        <label for="fruit">Select Case Type : </label>
+        <label>Select Case Type : </label>
         <div class="field">
             <div class="ui radio checkbox">
                 <input type="radio" id='c' #c (click)='updateChart(c)' value="c" name="casetype" checked="" tabindex="0" class="hidden">
@@ -47,8 +47,5 @@
         <div class="col">
             <google-chart [type]='chart.ColumnChart' style="width: 100%;" [options]='chart.options' [height]='chart.height' [data]='datatable'></google-chart>
         </div>
-        <!-- 
-        <div class="col">
-            <google-chart [type]='chart.LineChart' style="width: 100%;" [options]='chart.options' [height]='chart.height' [data]='datatable'></google-chart>
-        </div> -->
     </div>
+</div>
